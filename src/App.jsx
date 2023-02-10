@@ -2,6 +2,17 @@ import { useState } from "react";
 import Die from "./components/Die";
 
 function App() {
+  function allNewDice() {
+    let diceArray = [];
+    for (let i = 0; i < 10; i++) {
+      diceArray.push(Math.ceil(Math.random() * 6));
+      console.log("Added number");
+    }
+    return diceArray;
+  }
+  console.log(diceArray);
+  allNewDice();
+
   return (
     <main>
       <div className="dice-container">
