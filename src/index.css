@@ -44,6 +44,10 @@ main {
   cursor: pointer;
 }
 
+.die-box.held {
+  background-color: #59e391;
+}
+
 button {
   width: 90px;
   height: 36px;
