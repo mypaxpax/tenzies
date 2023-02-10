@@ -1,22 +1,33 @@
 import { useState } from "react";
 import Die from "./components/Die";
+import { nanoid } from "nanoid";
 
 function App() {
-  const [diceNum, setDiceNum] = useState(allNewDice());
+  const [dice, setDice] = useState(allNewDice());
 
   function allNewDice() {
     const newDice = [];
     for (let i = 0; i < 10; i++) {
-      newDice.push(Math.ceil(Math.random() * 6));
+      newDice.push({
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+        id: nanoid(),
+      });
     }
     return newDice;
   }
 
-  const diceElements = diceNum.map((dice) => <Die value={dice} />);
-  console.log(diceElements);
+  function rollDice() {
+    setDice(allNewDice());
+  }
+
+  const diceElements = dice.map((die) => (
+    <Die value={die.value} key={die.id} />
+  ));
   return (
     <main>
       <div className="dice-container">{diceElements}</div>
+      <button onClick={rollDice}>Reroll!</button>
     </main>
   );
 }
